@@ -13,9 +13,9 @@ namespace Day3
             var points = new List<Point> {startLocation};
 
             // Draw a new line of points for each vector and appending to the existing points
-            foreach (var newVector in vectors.Select(vector => Draw(points.Last(), vector)))
+            foreach (var line in vectors.Select(vector => Draw(points.Last(), vector)))
             {
-                points.AddRange(newVector);
+                points.AddRange(line);
             }
 
             return points;
