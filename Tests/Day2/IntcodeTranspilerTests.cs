@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Tests.Day2
 {
-    public class IncodeTranspilerTests
+    public class IntcodeTranspilerTests
     {
         /// - 1,0,0,0,99 becomes 2,0,0,0,99 (1 + 1 = 2).
         /// - 2,3,0,3,99 becomes 2,3,0,6,99 (3 * 2 = 6).
