@@ -44,8 +44,7 @@ namespace Day3
             }
 
             // The startLocation already exists in the path, exclude it from the return list of points
-            points.RemoveAt(0);
-            return points;
+            return points.Skip(1).ToList();
         }
 
         private static readonly Func<Point, Point> _MoveUp = startLocation => new Point(startLocation.X, ++startLocation.Y);
