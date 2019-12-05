@@ -28,9 +28,7 @@ namespace Day5
                 .Select(int.Parse)
                 .ToList();
 
-            var diagnosticCode = IntcodeTranspiler.Transpile(program).First();
-
-            Console.WriteLine($"diagnosticCode:{diagnosticCode}");
+            IntcodeTranspiler.Transpile(program);
         }
     }
 }

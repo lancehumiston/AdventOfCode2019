@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Day5
 {
@@ -11,7 +9,6 @@ namespace Day5
         private const int FirstParameterIndexOffset = 1;
         private const int SecondParameterIndexOffset = 2;
         private const int ResultIndexOffset = 3;
-        private const int AddOpcode = 1;
 
         /// <summary>
         /// An Intcode program is a list of integers separated by commas (like 1,0,0,3,99). To run one, start by
@@ -46,9 +43,6 @@ namespace Day5
 
         private static int ProcessInstruction(List<int> sequence, int offset)
         {
-            int variableOffset;
-            Func<int, int, int> operation;
-
             var instruction = $"{sequence[offset]}".PadLeft(4, '0');
             var opcode = (Opcode) int.Parse(instruction[new Range(2, 4)]);
             var firstParameterMode = (ParameterMode) int.Parse(instruction[new Range(1, 2)]);
@@ -57,37 +51,52 @@ namespace Day5
             switch (opcode)
             {
                 case Opcode.Add:
-                    variableOffset = 4;
-                    operation = _Add;
+                    sequence[sequence[offset + ResultIndexOffset]] = checked(GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset) + GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset));
 
-                    sequence[sequence[offset + ResultIndexOffset]] = operation(GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset),
-                        GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset));
-                    break;
+                    return 4;
                 case Opcode.Multiply:
-                    variableOffset = 4;
-                    operation = _Multiply;
+                    sequence[sequence[offset + ResultIndexOffset]] = checked(GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset) * GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset));
 
-                    sequence[sequence[offset + ResultIndexOffset]] = operation(GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset),
-                        GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset));
-                    break;
+                    return 4;
                 case Opcode.Input:
-                    variableOffset = 2;
-                    operation = _Input;
+                    sequence[sequence[offset + FirstParameterIndexOffset]] = int.Parse(Console.ReadLine() ?? throw new ArgumentNullException());
 
-                    sequence[sequence[offset + FirstParameterIndexOffset]] = operation(default, default);
-                    break;
+                    return 2;
                 case Opcode.Output:
-                    variableOffset = 2;
-                    operation = _Output;
+                    Console.WriteLine($"diagnosticCode:{GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset)}");
 
-                    operation(GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset), default);
-                    break;
+                    return 2;
+                case Opcode.JumpIfNotZero:
+                    if (GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset) != default)
+                    {
+                        return GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset) - offset;
+                    }
+
+                    return 3;
+                case Opcode.JumpIfZero:
+                    if (GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset) == default)
+                    {
+                        return GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset) - offset;
+                    }
+
+                    return 3;
+                case Opcode.LessThan:
+                    sequence[sequence[offset + ResultIndexOffset]] =
+                        GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset)
+                        < GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset)
+                        ? 1 : 0;
+
+                    return 4;
+                case Opcode.Equals:
+                    sequence[sequence[offset + ResultIndexOffset]] =
+                        GetParameterValue(firstParameterMode, sequence, offset + FirstParameterIndexOffset)
+                        == GetParameterValue(secondParameterMode, sequence, offset + SecondParameterIndexOffset)
+                        ? 1 : 0;
+
+                    return 4;
                 default:
                     throw new ArgumentException($"Unknown opcode: {sequence[offset]}");
             }
-            
-
-            return variableOffset;
         }
 
         private static int GetParameterValue(ParameterMode mode, List<int> sequence, int offset)
@@ -99,19 +108,6 @@ namespace Day5
                 _ => throw new ArgumentException($"Unknown mode: {mode}")
             };
         }
-
-        private static readonly Func<int, int, int> _Add = (x, y) => checked(x + y);
-
-        private static readonly Func<int, int, int> _Multiply = (x, y) => checked(x * y);
-
-        private static readonly Func<int, int, int> _Input = (x, y) => int.Parse(Console.ReadLine() ?? throw new ArgumentNullException());
-
-        private static readonly Func<int, int, int> _Output = (x, y) =>
-        {
-            Console.WriteLine(x);
-            return 0;
-        };
-
 
         public enum ParameterMode
         {
@@ -125,6 +121,10 @@ namespace Day5
             Multiply = 2,
             Input = 3,
             Output = 4,
+            JumpIfNotZero = 5,
+            JumpIfZero = 6,
+            LessThan = 7,
+            Equals = 8
         }
     }
 }
