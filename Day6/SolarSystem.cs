@@ -5,6 +5,11 @@ namespace Day6
 {
     public static class SolarSystem
     {
+        /// <summary>
+        /// Calculates the number of direct and indirect orbits in the solar system
+        /// </summary>
+        /// <param name="orbitPatterns"></param>
+        /// <returns></returns>
         public static int CalculateOrbitCount(List<string> orbitPatterns)
         {
             var planets = BuildMapOfTheUniverse(orbitPatterns);
@@ -13,6 +18,13 @@ namespace Day6
             return planets.Values.Sum(orbiter => CountHopsToCenter(planets, orbiter));
         }
 
+        /// <summary>
+        /// Recursively traverses the <paramref name="planets"/> until a value is found that does not exist as a key
+        /// for another value meaning that it does not orbit anything (i.e. the COM is found)
+        /// </summary>
+        /// <param name="planets"></param>
+        /// <param name="edgePlanet"></param>
+        /// <returns></returns>
         public static int CountHopsToCenter(Dictionary<string, string> planets, string edgePlanet)
         {
             if (!planets.ContainsKey(edgePlanet))
