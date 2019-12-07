@@ -26,6 +26,8 @@ namespace Day6
             var orbitPatterns = File.ReadAllLines(codeFilePath).ToList();
 
             Console.WriteLine($"Orbit count: {SolarSystem.CalculateOrbitCount(orbitPatterns)}");
+
+            Console.WriteLine($"Minimum orbit transfers: {SolarSystem.CalculatePlanetDistance(orbitPatterns, "YOU", "SAN")}");
         }
     }
 }

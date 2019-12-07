@@ -83,5 +83,47 @@ namespace Tests.Day6
             result.Should().ContainValues(expectedMap.Values)
                 .And.Subject.Should().ContainKeys(expectedMap.Keys);
         }
+
+        [Fact]
+        public void GetHopsToCenter_MapOfUniverse_ReturnsOrbitCount()
+        {
+            // Arrange
+            var expectedHops = new List<string> { "L", "K", "J", "E", "D", "C", "B", "COM" };
+            var mapOfUniverse = new Dictionary<string, string>
+            {
+                {"B", "COM"},
+                {"C", "B"},
+                {"D", "C"},
+                {"E", "D"},
+                {"F", "E"},
+                {"G", "B"},
+                {"H", "G"},
+                {"I", "D"},
+                {"J", "E"},
+                {"K", "J"},
+                {"L", "K"}
+            };
+
+            // Act
+            var result = SolarSystem.GetHopsToCenter(mapOfUniverse, "L");
+
+            // Assert
+            result.Should().ContainInOrder(expectedHops);
+        }
+
+        [Fact]
+        public void CalculatePlanetDistance_MapOfUniverse_ReturnsOrbitCount()
+        {
+            // Arrange
+            const string input = "COM)B,B)C,C)D,D)E,E)F,B)G,G)H,D)I,E)J,J)K,K)L,I)SAN,K)YOU";
+            var orbitPatterns = input.Split(',').ToList();
+            const int expectedTransferCount = 4;
+
+            // Act
+            var result = SolarSystem.CalculatePlanetDistance(orbitPatterns, "YOU", "SAN");
+
+            // Assert
+            result.Should().Be(expectedTransferCount);
+        }
     }
 }
