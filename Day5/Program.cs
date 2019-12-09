@@ -17,7 +17,7 @@ namespace Day5
         {
             if (args.Any(x => x.Equals("--help")))
             {
-                Console.WriteLine($"Provide the path of the modules mass values file (default: `{DefaultFilePath}`)");
+                Console.WriteLine($"Provide the path to the diagnostic program .txt file (default: `{DefaultFilePath}`)");
                 Environment.Exit(Environment.ExitCode);
             }
 

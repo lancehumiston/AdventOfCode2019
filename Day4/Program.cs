@@ -11,8 +11,8 @@ namespace Day4
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            var bounds = (108457, 562041);
-            Console.WriteLine($"Count:{Cryptography.CalculatePasswordCombinationCount(bounds.Item1, bounds.Item2)}");
+            var (lowerBound, upperBound) = (108457, 562041);
+            Console.WriteLine($"Count:{Cryptography.CalculatePasswordCombinationCount(lowerBound, upperBound)}");
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Day3
         {
             if (args.Any(x => x.Equals("--help")))
             {
-                Console.WriteLine($"Provide the path of the modules mass values file (default: `{DefaultFilePath}`)");
+                Console.WriteLine($"Provide the path of the wire paths .txt file (default: `{DefaultFilePath}`)");
                 Environment.Exit(Environment.ExitCode);
             }
 
