@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Day5;
@@ -11,13 +10,13 @@ namespace Day7
     {
         private (int, int) _Results;
 
-        public int ComputeOptimalSignal(List<int> program, int amplifierCount)
+        public int ComputeOptimalSignal(List<int> program, int amplifierCount, char[] phaseSettings)
         {
             const int lowerPhaseSettingBound = 0;
-            var upperPhaseSettingBound = (int)Math.Pow(5, amplifierCount);
+            var upperPhaseSettingBound = (int)Math.Pow(phaseSettings.Length, amplifierCount);
 
             var inputs = Enumerable.Range(lowerPhaseSettingBound, upperPhaseSettingBound)
-                .Select(x => IntToStringFast(x, new[] {'0', '1', '2', '3', '4'}).PadLeft(5, '0'))
+                .Select(x => IntToStringFast(x, phaseSettings).PadLeft(amplifierCount, '0'))
                 .Where(x => x.Distinct().Count() == x.Length).ToList();
             foreach (var input in inputs)
             {
@@ -40,8 +39,6 @@ namespace Day7
                 }
             }
 
-            Console.SetIn(new StreamReader(Console.OpenStandardInput()));
-            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
             return _Results.Item2;
         }
 

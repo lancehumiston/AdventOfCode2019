@@ -29,7 +29,7 @@ namespace Day7
                 .Select(int.Parse)
                 .ToList();
 
-            var result = new AmplificationCircuit().ComputeOptimalSignal(program, 5);
+            var result = new AmplificationCircuit().ComputeOptimalSignal(program, 5, new[] { '0', '1', '2', '3', '4' });
             Console.WriteLine(result);
         }
     }

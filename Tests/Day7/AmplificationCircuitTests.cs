@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Day7;
 using FluentAssertions;
 using Xunit;
@@ -17,9 +16,10 @@ namespace Tests.Day7
             // Arrange
             var program = input.Split(',').Select(int.Parse).ToList();
             const int thrusterCount = 5;
+            var phaseSettings = new[] {'0', '1', '2', '3', '4'};
 
             // Act
-            var result = new AmplificationCircuit().ComputeOptimalSignal(program, thrusterCount);
+            var result = new AmplificationCircuit().ComputeOptimalSignal(program, thrusterCount, phaseSettings);
 
             // Assert
             result.ShouldBeEquivalentTo(expectedOutputSignal);
