@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Day10;
 using FluentAssertions;
 using Xunit;
@@ -79,7 +76,7 @@ namespace Tests.Day10
             var (spaceStationLocation, asteroidCount, _) = SpaceStation.GetBestSpaceStation(rows);
 
             // Assert
-            //spaceStationLocation.ShouldBeEquivalentTo(location);
+            spaceStationLocation.ShouldBeEquivalentTo(location);
             asteroidCount.Should().Be(expectedCount);
         }
     }
