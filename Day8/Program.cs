@@ -17,7 +17,7 @@ namespace Day8
         {
             if (args.Any(x => x.Equals("--help")))
             {
-                Console.WriteLine($"Provide the path to the picture dat input .txt file (default: `{DefaultFilePath}`)");
+                Console.WriteLine($"Provide the path to the picture data input .txt file (default: `{DefaultFilePath}`)");
                 Environment.Exit(Environment.ExitCode);
             }
 
