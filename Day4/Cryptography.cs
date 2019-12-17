@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Day4
+namespace Day04
 {
     public static class Cryptography
     {

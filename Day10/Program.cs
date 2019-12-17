@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Day10
 {
-    class Program
+    public class Program
     {
         private const string DefaultFilePath = "input.txt";
 

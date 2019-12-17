@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Day2
+namespace Day02
 {
     public static class IntcodeTranspiler
     {

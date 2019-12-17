@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Day7;
+using Day07;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day7
+namespace Tests.Day07
 {
     public class AmplificationCircuitTests
     {

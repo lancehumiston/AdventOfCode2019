@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Day9;
+using Day09;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day9
+namespace Tests.Day09
 {
     public class TranspilerTests
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day9
+namespace Day09
 {
     public static class DoubleListExtensions
     {

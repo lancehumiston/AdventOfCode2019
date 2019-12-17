@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Day4;
+using Day04;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day4
+namespace Tests.Day04
 {
     public class CryptographyTests
     {

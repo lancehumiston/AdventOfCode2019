@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day8
+namespace Day08
 {
     public static class ImageDecoder
     {

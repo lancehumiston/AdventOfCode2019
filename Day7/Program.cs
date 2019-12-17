@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using Day5;
+using Day05;
 
-namespace Day7
+namespace Day07
 {
     public class Program
     {

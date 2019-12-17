@@ -1,6 +1,7 @@
 ﻿using System;
+using Day04;
 
-namespace Day4
+namespace Day04
 {
     public class Program
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Day2;
+using Day02;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day2
+namespace Tests.Day02
 {
     public class IntcodeTranspilerTests
     {

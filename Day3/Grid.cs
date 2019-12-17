@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace Day3
+namespace Day03
 {
     public static class Grid
     {

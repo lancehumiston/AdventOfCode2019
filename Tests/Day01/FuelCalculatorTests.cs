@@ -1,8 +1,8 @@
-using Day1;
+using Day01;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day1
+namespace Tests.Day01
 {
     public class FuelCalculatorTests
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Day8;
+using Day08;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day8
+namespace Tests.Day08
 {
     public   class ImageDecoderTests
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Day6;
+using Day06;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day6
+namespace Tests.Day06
 { 
     public class PlanetMapTests
     {

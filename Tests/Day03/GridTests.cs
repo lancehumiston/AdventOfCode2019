@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Day3;
+using Day03;
 using FluentAssertions;
 using Xunit;
 
-namespace Tests.Day3
+namespace Tests.Day03
 {
     public class GridTests
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Day1
+namespace Day01
 {
     /// <summary>
     /// --- Day 1: The Tyranny of the Rocket Equation ---
